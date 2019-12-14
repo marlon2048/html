@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/bbs.css"/>
+	</head>
+	<body>
+		<div class="bbs">
+			<header><span onclick="showFrom()">我要发帖</span></header>
+			
+			<section>
+				<ul id="postlist">
+				
+				</ul>
+			</section>
+			<div class="post" id="post">
+				<input  class="title" id="title" type="text" placeholder="请输入标题"/>
+				所属板块：
+				<select name="" id="sec">
+					<option value="">1</option>
+					<option value="">2</option>
+					<option value="">3</option>
+					<option value="">4</option>
+				</select>
+				<textarea class="content" name="" id="a" cols="30" rows="10"></textarea>
+				<input class="btn" type="button" value="发送"/ id="d" onclick="hideFrom()">
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		///当点击我要发帖按钮 表单显示
+		
+		function showFrom(){
+			document.getElementById("post").style.display="block";
+		}
+		
+		 function hideFrom() {
+        var tou = new Array("tou01.jpg", "tou02.jpg", "tou03.jpg", "tou04.jpg");
+        var touId=Math.floor(Math.random()*4);
+        var newList=document.createElement("li");
+        var touDiv=document.createElement("div");
+        var touImg=document.createElement("img");
+        touImg.setAttribute("src","images/"+tou[touId]);
+        document.getElementsByClassName("post")[0].style.display="none";
+        var title=document.createElement("h1");
+		var tv=document.getElementById("title").value;
+		title.innerHTML=tv;
+		 var today=new Date();
+        var yy=today.getFullYear();
+        var mm=today.getMonth()+1;
+        var dd=today.getDate();
+        var hh=today.getHours();
+        var mi=today.getMinutes();
+        var ss=today.getSeconds();
+        var time=yy+"年"+mm+"月"+dd+"日"+hh+":"+mi+":"+ss
+		var pp=document.createElement("p");
+		var span1=document.createElement("span");
+		var span2=document.createElement("span");
+		var de=document.getElementById("a").value;
+		span1.innerHTML=de;
+		span2.innerHTML=time;
+        touDiv.appendChild(touImg);
+        newList.appendChild(touDiv);
+        newList.appendChild(title);
+        newList.appendChild(pp);
+        pp.appendChild(span1);
+        pp.appendChild(span2);
+        var ul=document.getElementById("postlist");
+        ul.appendChild(newList)
+        var postList=document.getElementById("postList");
+    	postList.insertBefore(newList,postList.firstChild); 
+       
+
+   }
+		
+	</script>
+</html>
